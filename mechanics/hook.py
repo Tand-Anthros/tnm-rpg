@@ -11,8 +11,18 @@ class hook():
 
 
     def exec_input(self):
-        print(recursion(variables.get('last_input')))
-        time.sleep(3)
+        command = recursion(variables.get('last_input'))
+
+        if command.isdigit() or command in self.items():
+            self.move(command)
+        elif command.isspace() and command in ['']:
+            pass
+        else:
+            i = 1
+            items = self.items()
+            while str(i) in items:
+                i += 1
+            self.this().set(str(i), command)
 
 
     def loop(self, *args):
@@ -31,8 +41,21 @@ class hook():
         variables.set('point', point)
 
 
-    def choice(self, item):
+    def move(self, item):
         variables.set('point', variables.get('point') + '.' + item)
+
+
+    def back(self):
+        variables.set('point', '.'.join(variables.get('point').split('.')[:-1]))
+
+
+    def remove(self, object):
+        if type(object).__name__: object.remove()
+        else: return '???'
+
+    
+    def exit(self):
+        exit()
 
 
 hook = hook()

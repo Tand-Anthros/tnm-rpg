@@ -17,13 +17,11 @@ class interface():
 
 
     def scene(self):
+        
         point_object = new_object(variables.get('point'))
         print(recursion(point_object.value()), end = '\n\n\n')
-        
-        i = 1
         for item in point_object.items():
-            print(f'{i})', point_object[item])
-            i += 1
+            print(f'{item})', point_object[item])
         print()
 
     

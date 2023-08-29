@@ -28,7 +28,8 @@ def core():
         while 'main_loop':
             recursion(variables.get('loop'))
 
-
+    except SystemExit:
+        print('досвидания!')
     except:
         print('\n\nуууупс! кажется произошла ошибка, пожалуйста обратитесь за поддержкой в README.md')
         raise

@@ -11,7 +11,7 @@ class object():
         else: slash = '/'
         self.point = point.split('.')
         self.location = slash.join(__file__.split(slash)[:-2]) + slash + 'objects' + slash + self.point[0] + '.json'
-        if not os.path.isfile(self.location): open(self.location, encoding = 'utf-16').write('{"":"???"}')
+        if not os.path.isfile(self.location): open(self.location, 'w', encoding = 'utf-16').write('{"":"???"}')
 
     
     def __str__(self):
@@ -35,6 +35,10 @@ class object():
         return object('.'.join(self.point) + '.' + str(item))
     
 
+    def where(self):
+        return self.point
+
+
     def value(self):
         self.update()
         return self.content
@@ -42,17 +46,32 @@ class object():
 
     def get(self, item):
         self.update()
-        if item in self.file.keys(): return True
-        else: False
+        if item == '': return self.content
+        return object('.'.join(self.point) + '.' + str(item))
+
+
+    def set(self, item, value):
+        self.update(item = item, value = value)
 
 
     def items(self):
         self.update()
         out = list()
-        for key in self.file.keys():
+        for key in self.child:
             if key not in ['']: out.append(key)
         return out
     
+
+    def remove(self):
+        beckup = self.update(item = 'removed', value = 'removed')
+        removed = object('removed')
+        max_iter = 0
+        for item in removed.items():
+            if str(item).isdigit():
+                if int(str(item)) > max_iter:
+                    max_iter = int(str(item))
+        object('removed' + '.' + str(max_iter + 1)).set('.'.join(self.point), beckup[[*beckup.keys()][0]][''])
+
 
     def update(self, item = None, value = None):
         if not os.path.isfile(self.location):
@@ -78,7 +97,15 @@ class object():
             else:
                 temp_file[key] = {"":"???"}
             self.content = temp_file[key]['']
+            remove_file = temp_file
+            remove_key = key
             temp_file = temp_file[key]
+        self.child = [*temp_file.keys()]
 
-        if item: temp_file[item] = {"":value}
+        if item == 'removed' and value == 'removed': 
+            out = {remove_key: remove_file[remove_key]}
+            del remove_file[remove_key]
+            return out
+        elif item: temp_file[item] = {"":value}
+
         json.dump(self.file, open(self.location, 'w', encoding = 'utf-16'))

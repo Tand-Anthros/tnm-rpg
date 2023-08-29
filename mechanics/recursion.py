@@ -17,12 +17,12 @@ def recursion(command, in_bracket = False):
                     if bracket == 0: break
                 cut += 1    
 
-            if cut == len(command): cut += 1
             if is_bracket and bracket == 0:
                 mechanic = command[pointer:][:is_bracket - pointer]
                 args = recursion(command[is_bracket + 1:][:cut - 1 - is_bracket], in_bracket = True)
                 out = execution(mechanic, args = args)
-                divided.append(out)              
+                divided.append(out)
+                cut += 1            
             else: 
                 out = execution(command[pointer:][:cut - pointer])
                 divided.append(out)
