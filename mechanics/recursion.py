@@ -6,7 +6,11 @@ def recursion(command, in_bracket = False):
         if command[pointer] in ['\\']:
             command = command[:pointer] + command[pointer + 1:]
         elif command[pointer] in ['"']:
-            pass
+            pointer += 1
+            while pointer < len(command) and command[pointer] != '"':
+                if command[pointer] in ['\\']:
+                    pointer += 1
+                pointer += 1
         elif command[pointer] in ['@', '$']: 
             cut = pointer   
             is_bracket = False        
@@ -27,12 +31,13 @@ def recursion(command, in_bracket = False):
                 out = execution(mechanic, args = args)
                 divided.append(out)
                 cut += 1            
-            else: 
+            else:
                 out = execution(command[pointer:][:cut - pointer])
                 divided.append(out)
 
             if cut < len(command) and command[cut] == '\\': cut += 1
             command = command[:pointer] + str(out) + command[cut:]
+            pointer = pointer - 1 + len(str(out))
 
         pointer += 1
     if in_bracket: return divided
