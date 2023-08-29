@@ -11,11 +11,13 @@ class hook():
 
 
     def exec_input(self):
+        #input('!!!before')
         command = recursion(variables.get('last_input'))
-
+        #print(f'>>>"{command}"')
+        #input('!!!after')
         if command.isdigit() or command in self.items():
             self.move(command)
-        elif command.isspace() and command in ['']:
+        elif command.isspace() or command in ['']:
             pass
         else:
             i = 1

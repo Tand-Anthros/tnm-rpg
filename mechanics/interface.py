@@ -17,7 +17,6 @@ class interface():
 
 
     def scene(self):
-        
         point_object = new_object(variables.get('point'))
         print(recursion(point_object.value()), end = '\n\n\n')
         for item in point_object.items():
