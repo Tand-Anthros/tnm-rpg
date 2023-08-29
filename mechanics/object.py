@@ -105,6 +105,7 @@ class object():
         if item == 'removed' and value == 'removed': 
             out = {remove_key: remove_file[remove_key]}
             del remove_file[remove_key]
+            json.dump(self.file, open(self.location, 'w', encoding = 'utf-16'))
             return out
         elif item: temp_file[item] = {"":value}
 

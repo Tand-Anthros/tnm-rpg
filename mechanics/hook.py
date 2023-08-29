@@ -11,10 +11,7 @@ class hook():
 
 
     def exec_input(self):
-        #input('!!!before')
         command = recursion(variables.get('last_input'))
-        #print(f'>>>"{command}"')
-        #input('!!!after')
         if command.isdigit() or command in self.items():
             self.move(command)
         elif command.isspace() or command in ['']:
@@ -52,7 +49,7 @@ class hook():
 
 
     def remove(self, object):
-        if type(object).__name__: object.remove()
+        if type(object).__name__ == 'object': object.remove()
         else: return '???'
 
     
