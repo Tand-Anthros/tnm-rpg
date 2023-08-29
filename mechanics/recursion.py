@@ -3,7 +3,11 @@ def recursion(command, in_bracket = False):
     pointer = 0
     divided = list()
     while pointer < len(command):
-        if command[pointer] in ['@', '$']: 
+        if command[pointer] in ['\\']:
+            command = command[:pointer] + command[pointer + 1:]
+        elif command[pointer] in ['"']:
+            pass
+        elif command[pointer] in ['@', '$']: 
             cut = pointer   
             is_bracket = False        
             bracket = 0

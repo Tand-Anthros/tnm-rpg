@@ -33,7 +33,7 @@ class hook():
     
 
     def items(self):
-        return new_object(variables.get('point')).items()
+        return self.this().items()
 
 
     def point(self, point):
