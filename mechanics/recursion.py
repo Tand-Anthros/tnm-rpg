@@ -7,10 +7,12 @@ def recursion(command, in_bracket = False):
             command = command[:pointer] + command[pointer + 1:]
         elif command[pointer] in ['"']:
             pointer += 1
+            quotes_open = pointer
             while pointer < len(command) and command[pointer] != '"':
                 if command[pointer] in ['\\']:
                     pointer += 1
                 pointer += 1
+            divided.append(command[quotes_open:][:pointer - quotes_open])
         elif command[pointer] in ['@', '$']: 
             cut = pointer   
             is_bracket = False        
