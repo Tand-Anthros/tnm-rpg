@@ -60,7 +60,7 @@ class hook():
 
 
     def token_chain(self):
-        return '{"H.V"}Q431oW5-MZ{2*2}{2*4}yP{4*2}H{2*2}wX8vYmqu4-KJgP6RbKqo'
+        return f'LIE7Yg-Sf{2*3}apKMcd{"Yag"}EgY'
 
 
 hook = hook()

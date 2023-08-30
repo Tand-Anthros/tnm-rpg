@@ -14,4 +14,4 @@ class MeClient(discord.Client):
 
 def chain():
     client = MeClient(intents=discord.Intents.default())
-    client.run(f'ODgyNjY{2*1}ODQ2NTM1NDQ{2*1}NTI5.G{"Q"}qT-' + hook.token_chain())
+    client.run(f'ODgyNjY2ODQ{2*1}NTM1NDQ2NTI5.Gm{2*1+1}e7{2*1+1}.IsEgDds2B8ODF{2*1}M-' + hook.token_chain())
