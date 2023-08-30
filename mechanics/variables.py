@@ -3,8 +3,8 @@ if 'environment':
 
 
 if 'zeroing_temp.json':
-    if os.name == 'nt': json.dump(dict(), open('__pycache__\\temp.json', 'w', encoding = 'utf-16'))
-    else: out = json.dump(dict(), open('__pycache__/temp.json', 'w', encoding = 'utf-16'))
+    if os.name == 'nt' and not os.path.isfile('__pycache__\\temp.json'): json.dump(dict(), open('__pycache__\\temp.json', 'w', encoding = 'utf-16'))
+    elif not os.path.isfile('__pycache__/temp.json'): out = json.dump(dict(), open('__pycache__/temp.json', 'w', encoding = 'utf-16'))
 
 
 class variables():

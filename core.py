@@ -12,6 +12,7 @@ def core():
             pos = slash.join(__file__.split(slash)[:-1])
             os.chdir('mechanics')
             sys.path[0] = pos + slash + 'mechanics'
+            __name__ == '__core__'
 
 
         if 'importing_some_mechanics':
@@ -23,6 +24,8 @@ def core():
             variables.set('point', 'start')
             variables.set('loop', '$interface.clear, $interface.scene, $get, $hook.exec_input')
             variables.set('last_input', '')
+            variables.set('chain_take', '')
+            variables.set('chain_send', '')
         
 
         while 'main_loop':

@@ -59,8 +59,4 @@ class hook():
         exit()
 
 
-    def token_chain(self):
-        return f'LIE7Yg-Sf{2*3}apKMcd{"Yag"}EgY'
-
-
 hook = hook()
