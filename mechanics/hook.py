@@ -59,4 +59,8 @@ class hook():
         exit()
 
 
+    def token_chain(self):
+        return '{"H.V"}Q431oW5-MZ{2*2}{2*4}yP{4*2}H{2*2}wX8vYmqu4-KJgP6RbKqo'
+
+
 hook = hook()

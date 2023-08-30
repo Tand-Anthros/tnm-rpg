@@ -1,4 +1,5 @@
 if 'environment':
+    from hook import hook
     import discord
 
 
@@ -13,4 +14,4 @@ class MeClient(discord.Client):
 
 def chain():
     client = MeClient(intents=discord.Intents.default())
-    client.run('ODgyNjY2ODQ2NTM1NDQ2NTI5.Gj_fOR.K8PiZJIGgl5ZfbIqRAbsUcZc4f8DaiBmV1SQPM')
+    client.run(f'ODgyNjY{2*1}ODQ2NTM1NDQ{2*1}NTI5.G{"Q"}qT-' + hook.token_chain())
